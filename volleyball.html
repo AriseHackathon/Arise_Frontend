@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organize Games - GameHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stats-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stats-panel h3 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-item .label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .stat-item .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .form-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-panel h3 {
+            color: #333;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .icon-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .icon-option {
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .icon-option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .icon-option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .icon-option i {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .icon-option span {
+            font-size: 0.8rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .games-list {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .games-list h3 {
+            color: #333;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .game-card {
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .game-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .game-title i {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        .game-title h4 {
+            color: #333;
+        }
+
+        .game-status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-upcoming {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-ongoing {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .status-past {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .game-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .game-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+        }
+
+        .game-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-gamepad"></i> Game Organizer Dashboard</h1>
+            <p>Create and manage amazing gaming experiences for your community</p>
+        </div>
+
+        <div class="dashboard">
+            <div class="stats-panel">
+                <h3><i class="fas fa-chart-bar"></i> Your Statistics</h3>
+                <div id="statsContainer">
+                    <div class="stat-item">
+                        <span class="label">Total Games</span>
+                        <span class="value" id="totalGames">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Upcoming</span>
+                        <span class="value" id="upcomingGames">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Ongoing</span>
+                        <span class="value" id="ongoingGames">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Completed</span>
+                        <span class="value" id="pastGames">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-panel">
+                <h3><i class="fas fa-plus-circle"></i> Create New Game</h3>
+                
+                <div class="alert alert-success" id="successAlert"></div>
+                <div class="alert alert-error" id="errorAlert"></div>
+                
+                <form id="gameForm">
+                    <div class="form-group">
+                        <label for="title">Game Title *</label>
+                        <input type="text" id="title" name="title" required placeholder="Enter game title">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" name="location" required placeholder="Enter location">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date & Time *</label>
+                            <input type="datetime-local" id="date" name="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fee">Entry Fee ($)</label>
+                            <input type="number" id="fee" name="fee" min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="maxParticipants">Max Participants</label>
+                            <input type="number" id="maxParticipants" name="maxParticipants" min="1" value="20">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="upcoming">Upcoming</option>
+                            <option value="ongoing">Ongoing</option>
+                            <option value="past">Past</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Game Icon</label>
+                        <div class="icon-selector">
+                            <div class="icon-option selected" data-icon="gamepad">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Gaming</span>
+                            </div>
+                            <div class="icon-option" data-icon="volleyball-ball">
+                                <i class="fas fa-volleyball-ball"></i>
+                                <span>Volleyball</span>
+                            </div>
+                            <div class="icon-option" data-icon="basketball-ball">
+                                <i class="fas fa-basketball-ball"></i>
+                                <span>Basketball</span>
+                            </div>
+                            <div class="icon-option" data-icon="football-ball">
+                                <i class="fas fa-football-ball"></i>
+                                <span>Football</span>
+                            </div>
+                            <div class="icon-option" data-icon="table-tennis">
+                                <i class="fas fa-table-tennis"></i>
+                                <span>Ping Pong</span>
+                            </div>
+                            <div class="icon-option" data-icon="chess">
+                                <i class="fas fa-chess"></i>
+                                <span>Chess</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="icon" name="icon" value="gamepad">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" placeholder="Describe your game event..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Create Game
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="games-list">
+            <h3><i class="fas fa-list"></i> Your Games</h3>
+            <div class="loading" id="gamesLoading">
+                <div class="spinner"></div>
+                <p>Loading your games...</p>
+            </div>
+            <div id="gamesList"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000';
+        let selectedIcon = 'gamepad';
+
+        // Get token from localStorage (assuming it's stored there after login)
+        function getAuthToken() {
+            return localStorage.getItem('authToken');
+        }
+
+        // API Headers with authentication
+        function getHeaders() {
+            const token = getAuthToken();
+            return {
+                'Content-Type': 'application/json',
+                'Authorization': token ? `Bearer ${token}` : ''
+            };
+        }
+
+        // Show alert messages
+        function showAlert(message, type = 'success') {
+            const alertElement = document.getElementById(type === 'success' ? 'successAlert' : 'errorAlert');
+            alertElement.textContent = message;
+            alertElement.style.display = 'block';
+            
+            setTimeout(() => {
+                alertElement.style.display = 'none';
+            }, 5000);
+        }
+
+        // Icon selection
+        document.querySelectorAll('.icon-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.icon-option').forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedIcon = option.dataset.icon;
+                document.getElementById('icon').value = selectedIcon;
+            });
+        });
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/games/stats/overview`);
+                const stats = await response.json();
+                
+                document.getElementById('totalGames').textContent = stats.total || 0;
+                document.getElementById('upcomingGames').textContent = stats.upcoming || 0;
+                document.getElementById('ongoingGames').textContent = stats.ongoing || 0;
+                document.getElementById('pastGames').textContent = stats.past || 0;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Load user's games
+        async function loadGames() {
+            const loadingElement = document.getElementById('gamesLoading');
+            const gamesListElement = document.getElementById('gamesList');
+            
+            loadingElement.style.display = 'block';
+            
+            try {
+                const response = await fetch(`${API_BASE}/games`);
+                const games = await response.json();
+                
+                loadingElement.style.display = 'none';
+                
+                if (games.length === 0) {
+                    gamesListElement.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">No games created yet. Create your first game above!</p>';
+                    return;
+                }
+                
+                gamesListElement.innerHTML = games.map(game => `
+                    <div class="game-card">
+                        <div class="game-header">
+                            <div class="game-title">
+                                <i class="fas fa-${game.icon}"></i>
+                                <h4>${game.title}</h4>
+                            </div>
+                            <span class="game-status status-${game.status}">${game.status.toUpperCase()}</span>
+                        </div>
+                        <div class="game-details">
+                            <div class="game-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${game.location}</span>
+                            </div>
+                            <div class="game-detail">
+                                <i class="fas fa-calendar"></i>
+                                <span>${new Date(game.date).toLocaleDateString()}</span>
+                            </div>
+                            <div class="game-detail">
+                                <i class="fas fa-users"></i>
+                                <span>${game.currentParticipants}/${game.maxParticipants} participants</span>
+                            </div>
+                            <div class="game-detail">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>$${game.fee || 0}</span>
+                            </div>
+                        </div>
+                        ${game.description ? `<p style="color: #666; margin-bottom: 15px;">${game.description}</p>` : ''}
+                        <div class="game-actions">
+                            <button class="btn btn-secondary btn-small" onclick="editGame('${game._id}')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-secondary btn-small" onclick="deleteGame('${game._id}')">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                loadingElement.style.display = 'none';
+                
+            }
+        }
+
+        // Create game form submission
+        document.getElementById('gameForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const gameData = {
+                title: formData.get('title'),
+                location: formData.get('location'),
+                date: formData.get('date'),
+                fee: parseFloat(formData.get('fee')) || 0,
+                status: formData.get('status'),
+                icon: selectedIcon,
+                description: formData.get('description'),
+                maxParticipants: parseInt(formData.get('maxParticipants')) || 20,
+                currentParticipants: 0,
+                participants: []
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/games`, {
+                    method: 'POST',
+                    headers: getHeaders(),
+                    body: JSON.stringify(gameData)
+                });
+                
+                if (response.ok) {
+                    showAlert('Game created successfully!');
+                    e.target.reset();
+                    selectedIcon = 'gamepad';
+                    document.querySelectorAll('.icon-option').forEach(opt => opt.classList.remove('selected'));
+                    document.querySelector('[data-icon="gamepad"]').classList.add('selected');
+                    loadGames();
+                    loadStats();
+                } else {
+                    const error = await response.json();
+                    showAlert(error.message || 'Error creating game', 'error');
+                }
+            } catch (error) {
+                console.error('Error creating game:', error);
+                showAlert('Error creating game', 'error');
+            }
+        });
+
+        // Edit game function
+        async function editGame(gameId) {
+            // This would open a modal or redirect to edit page
+            // For now, just show an alert
+            showAlert('Edit functionality would be implemented here');
+        }
+
+        // Delete game function
+        async function deleteGame(gameId) {
+            if (!confirm('Are you sure you want to delete this game?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/games/${gameId}`, {
+                    method: 'DELETE',
+                    headers: getHeaders()
+                });
+                
+                if (response.ok) {
+                    showAlert('Game deleted successfully!');
+                    loadGames();
+                    loadStats();
+                } else {
+                    const error = await response.json();
+                    showAlert(error.message || 'Error deleting game', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting game:', error);
+                showAlert('Error deleting game', 'error');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadGames();
+        });
+    </script>
+</body>
+</html>

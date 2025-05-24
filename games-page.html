@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Games Hub - Find Your Next Game</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./styles/games-page.css">
+</head>
+
+<body>
+   <div id="page-content">
+      <header class="header">
+         <h1><i class="fas fa-gamepad"></i> Games Hub</h1>
+         <p>Discover and join amazing games in your area</p>
+      </header>
+
+      <div id="container">
+         <main id="games-type">
+            <div class="nav-tabs">
+               <button class="game-tab active" data-type="ongoing">
+                  <i class="fas fa-play"></i> Ongoing Games
+               </button>
+               <button class="game-tab" data-type="upcoming">
+                  <i class="fas fa-clock"></i> Upcoming Games
+               </button>
+               <button class="game-tab" data-type="past">
+                  <i class="fas fa-history"></i> Past Games
+               </button>
+            </div>
+         </main>
+
+         <div class="controls">
+            <div class="search-box">
+               <i class="fas fa-search"></i>
+               <input type="text" id="searchInput" placeholder="Search games by name or location...">
+            </div>
+            <select class="filter-dropdown" id="locationFilter">
+               <option value="">All Locations</option>
+               <option value="Bengaluru">Bengaluru</option>
+               <option value="Mumbai">Mumbai</option>
+               <option value="Delhi">Delhi</option>
+            </select>
+         </div>
+
+         <div class="loading" id="loadingState">
+            <div class="spinner"></div>
+            <p>Loading games...</p>
+         </div>
+
+         <!-- Ongoing Games Section -->
+         <div id="ongoing-games" class="section">
+            <div class="section-header">
+               <h2 class="section-title">Ongoing Games</h2>
+               <span class="game-count">11 games available</span>
+            </div>
+            <section class="card-container" id="ongoingContainer">
+            </section>
+         </div>
+
+         <div id="upcoming-games" class="section" style="display:none;">
+            <div class="section-header">
+               <h2 class="section-title">Upcoming Games</h2>
+               <span class="game-count">11 games scheduled</span>
+            </div>
+            <section class="card-container" id="upcomingContainer">
+            </section>
+         </div>
+
+         <div id="past-games" class="section" style="display:none;">
+            <div class="section-header">
+               <h2 class="section-title">Past Games</h2>
+               <span class="game-count">11 games completed</span>
+            </div>
+            <section class="card-container" id="pastContainer">
+            </section>
+         </div>
+
+         <div class="empty-state" id="emptyState" style="display:none;">
+            <i class="fas fa-search"></i>
+            <h3>No games found</h3>
+            <p>Try adjusting your search or filter criteria</p>
+         </div>
+      </div>
+      <div class="conduct-games-section">
+         <div class="conduct-games-content">
+            <div class="conduct-games-text">
+               <h2><i class="fas fa-trophy"></i> Want to Conduct Your Own Game?</h2>
+               <p>Organize amazing games and tournaments in your area. Create memorable experiences for players and build your community!</p>
+               <div class="features-list">
+                  <div class="feature-item">
+                     <i class="fas fa-users"></i>
+                     <span>Manage Players</span>
+                  </div>
+                  <div class="feature-item">
+                     <i class="fas fa-calendar-plus"></i>
+                     <span>Schedule Events</span>
+                  </div>
+                  <div class="feature-item">
+                     <i class="fas fa-map-marker-alt"></i>
+                     <span>Set Locations</span>
+                  </div>
+                  <div class="feature-item">
+                     <i class="fas fa-chart-line"></i>
+                     <span>Track Progress</span>
+                  </div>
+               </div>
+            </div>
+            <div class="conduct-games-action">
+               <button class="conduct-btn" onclick="window.location.href='volleyball.html'">
+                  <i class="fas fa-plus-circle"></i>
+                  <span>Start Organizing</span>
+               </button>
+               <p class="conduct-subtext">Join thousands of organizers creating amazing gaming experiences</p>
+            </div>
+         </div>
+      </div>
+      
+   </div>
+
+   <!-- Modal -->
+   <div class="modal-overlay" id="gameModal">
+      <div class="modal">
+         <div class="modal-header">
+            <button class="modal-close" onclick="closeModal()">
+               <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-sport-icon" id="modalIcon">
+               <i class="fas fa-gamepad"></i>
+            </div>
+         </div>
+         <div class="modal-content">
+            <h2 class="modal-title" id="modalTitle">Game Title</h2>
+            <div class="modal-details">
+               <div class="detail-group">
+                  <div class="detail-title">
+                     <i class="fas fa-map-marker-alt"></i>
+                     Location
+                  </div>
+                  <div class="detail-value" id="modalLocation">Location</div>
+               </div>
+               <div class="detail-group">
+                  <div class="detail-title">
+                     <i class="fas fa-calendar-alt"></i>
+                     Date & Time
+                  </div>
+                  <div class="detail-value" id="modalDate">Date</div>
+               </div>
+               <div class="detail-group" id="feeGroup">
+                  <div class="detail-title">
+                     <i class="fas fa-rupee-sign"></i>
+                     Entry Fee
+                  </div>
+                  <div class="detail-value" id="modalFee">Fee</div>
+               </div>
+               <div class="detail-group">
+                  <div class="detail-title">
+                     <i class="fas fa-users"></i>
+                     Participants
+                  </div>
+                  <div class="detail-value" id="modalParticipants">12/20 Players</div>
+                  <div class="participants-list">
+                     <span class="participant-badge">John D.</span>
+                     <span class="participant-badge">Sarah M.</span>
+                     <span class="participant-badge">Mike R.</span>
+                     <span class="participant-badge">+9 more</span>
+                  </div>
+               </div>
+               <div class="detail-group">
+                  <div class="detail-title">
+                     <i class="fas fa-info-circle"></i>
+                     Description
+                  </div>
+                  <div class="detail-value" id="modalDescription">Join us for an exciting game! All skill levels welcome. Equipment provided.</div>
+               </div>
+            </div>
+            <div class="modal-actions">
+               <button class="modal-btn btn-primary" id="joinBtn">
+                  <i class="fas fa-plus"></i> Join Game
+               </button>
+               <button class="modal-btn btn-secondary" onclick="shareGame()">
+                  <i class="fas fa-share"></i> Share
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      const gamesData = {
+         ongoing: [
+            { title: 'VOLLEYBALL', location: 'Bengaluru', date: '12-10-2025', fee: '450', status: 'ongoing', icon: 'volleyball-ball', description: 'Beach volleyball tournament with exciting prizes! All skill levels welcome.' },
+            { title: 'BASKETBALL', location: 'Mumbai', date: '15-10-2025', fee: '300', status: 'ongoing', icon: 'basketball-ball', description: '3v3 streetball competition. Fast-paced action guaranteed!' },
+            { title: 'FOOTBALL', location: 'Delhi', date: '18-10-2025', fee: '200', status: 'ongoing', icon: 'futbol', description: '11v11 football match. Professional referees and equipment provided.' },
+            { title: 'TENNIS', location: 'Bengaluru', date: '20-10-2025', fee: '500', status: 'ongoing', icon: 'table-tennis', description: 'Singles and doubles tournaments. Premium courts and facilities.' },
+            { title: 'CRICKET', location: 'Mumbai', date: '22-10-2025', fee: '350', status: 'ongoing', icon: 'baseball-ball', description: 'T20 format cricket match. Professional ground and equipment.' },
+            { title: 'BADMINTON', location: 'Delhi', date: '25-10-2025', fee: '250', status: 'ongoing', icon: 'table-tennis', description: 'Indoor badminton tournament with air-conditioned courts.' },
+            { title: 'SWIMMING', location: 'Bengaluru', date: '28-10-2025', fee: '400', status: 'ongoing', icon: 'swimmer', description: 'Swimming competition with multiple categories and age groups.' },
+            { title: 'HOCKEY', location: 'Mumbai', date: '30-10-2025', fee: '300', status: 'ongoing', icon: 'hockey-puck', description: 'Field hockey match with professional equipment provided.' },
+            { title: 'GOLF', location: 'Delhi', date: '02-11-2025', fee: '800', status: 'ongoing', icon: 'golf-ball', description: '18-hole golf tournament at premium golf course.' },
+            { title: 'RUGBY', location: 'Bengaluru', date: '05-11-2025', fee: '450', status: 'ongoing', icon: 'football-ball', description: 'Rugby sevens tournament with experienced coaches.' },
+            { title: 'ARCHERY', location: 'Mumbai', date: '08-11-2025', fee: '350', status: 'ongoing', icon: 'bullseye', description: 'Target archery competition with professional equipment.' }
+         ],
+         upcoming: [
+            { title: 'VOLLEYBALL', location: 'Bengaluru', date: 'Not Announced', status: 'upcoming', icon: 'volleyball-ball', description: 'Upcoming volleyball tournament. Stay tuned for dates!' },
+            { title: 'BASKETBALL', location: 'Mumbai', date: 'Not Announced', status: 'upcoming', icon: 'basketball-ball', description: 'Next basketball championship coming soon.' },
+            { title: 'FOOTBALL', location: 'Delhi', date: 'Not Announced', status: 'upcoming', icon: 'futbol', description: 'Football league registration opening soon.' },
+            { title: 'TENNIS', location: 'Bengaluru', date: 'Not Announced', status: 'upcoming', icon: 'table-tennis', description: 'Tennis championship with exciting prizes.' },
+            { title: 'CRICKET', location: 'Mumbai', date: 'Not Announced', status: 'upcoming', icon: 'baseball-ball', description: 'Cricket tournament preparations underway.' },
+            { title: 'BADMINTON', location: 'Delhi', date: 'Not Announced', status: 'upcoming', icon: 'table-tennis', description: 'Badminton championship coming next month.' },
+            { title: 'SWIMMING', location: 'Bengaluru', date: 'Not Announced', status: 'upcoming', icon: 'swimmer', description: 'Swimming competition details to be announced.' },
+            { title: 'HOCKEY', location: 'Mumbai', date: 'Not Announced', status: 'upcoming', icon: 'hockey-puck', description: 'Hockey league starting soon.' },
+            { title: 'GOLF', location: 'Delhi', date: 'Not Announced', status: 'upcoming', icon: 'golf-ball', description: 'Golf tournament registration opening.' },
+            { title: 'RUGBY', location: 'Bengaluru', date: 'Not Announced', status: 'upcoming', icon: 'football-ball', description: 'Rugby championship preparations in progress.' },
+            { title: 'ARCHERY', location: 'Mumbai', date: 'Not Announced', status: 'upcoming', icon: 'bullseye', description: 'Archery competition details coming soon.' }
+         ],
+         past: [
+            { title: 'VOLLEYBALL', location: 'Bengaluru', date: 'Ended', status: 'ended', icon: 'volleyball-ball', description: 'Amazing volleyball tournament completed successfully!' },
+            { title: 'BASKETBALL', location: 'Mumbai', date: 'Ended', status: 'ended', icon: 'basketball-ball', description: 'Thrilling basketball championship concluded.' },
+            { title: 'FOOTBALL', location: 'Delhi', date: 'Ended', status: 'ended', icon: 'futbol', description: 'Spectacular football match with great participation.' },
+            { title: 'TENNIS', location: 'Bengaluru', date: 'Ended', status: 'ended', icon: 'table-tennis', description: 'Tennis tournament completed with exciting matches.' },
+            { title: 'CRICKET', location: 'Mumbai', date: 'Ended', status: 'ended', icon: 'baseball-ball', description: 'Cricket championship finished with nail-biting finale.' },
+            { title: 'BADMINTON', location: 'Delhi', date: 'Ended', status: 'ended', icon: 'table-tennis', description: 'Badminton tournament concluded successfully.' },
+            { title: 'SWIMMING', location: 'Bengaluru', date: 'Ended', status: 'ended', icon: 'swimmer', description: 'Swimming competition completed with record times.' },
+            { title: 'HOCKEY', location: 'Mumbai', date: 'Ended', status: 'ended', icon: 'hockey-puck', description: 'Hockey match ended with great sportsmanship.' },
+            { title: 'GOLF', location: 'Delhi', date: 'Ended', status: 'ended', icon: 'golf-ball', description: 'Golf tournament concluded at premium course.' },
+            { title: 'RUGBY', location: 'Bengaluru', date: 'Ended', status: 'ended', icon: 'football-ball', description: 'Rugby championship completed successfully.' },
+            { title: 'ARCHERY', location: 'Mumbai', date: 'Ended', status: 'ended', icon: 'bullseye', description: 'Archery competition finished with perfect scores.' }
+         ]
+      };
+
+      let currentFilter = 'ongoing';
+      let searchTerm = '';
+      let locationFilter = '';
+
+      const tabs = document.querySelectorAll('.game-tab');
+      const sections = document.querySelectorAll('.section');
+      const searchInput = document.getElementById('searchInput');
+      const locationSelect = document.getElementById('locationFilter');
+      const loadingState = document.getElementById('loadingState');
+      const emptyState = document.getElementById('emptyState');
+      const modal = document.getElementById('gameModal');
+
+      document.addEventListener('DOMContentLoaded', function() {
+         renderGames();
+         setupEventListeners();
+      });
+
+      function setupEventListeners() {
+         tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+               const type = tab.dataset.type;
+               switchTab(type);
+            });
+         });
+
+         searchInput.addEventListener('input', (e) => {
+            searchTerm = e.target.value.toLowerCase();
+            filterAndRenderGames();
+         });
+
+         locationSelect.addEventListener('change', (e) => {
+            locationFilter = e.target.value;
+            filterAndRenderGames();
+         });
+
+         // Close modal when clicking outside
+         modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+               closeModal();
+            }
+         });
+
+         // Close modal with Escape key
+         document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+               closeModal();
+            }
+         });
+      }
+
+      function switchTab(type) {
+         tabs.forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.type === type);
+         });
+
+         sections.forEach(section => {
+            section.style.display = section.id === `${type}-games` ? 'block' : 'none';
+         });
+
+         currentFilter = type;
+         renderGames();
+      }
+
+      function createGameCard(game) {
+         return `
+            <div class="card" onclick="showGameDetails('${game.title}', '${game.location}')">
+               <div class="card-image">
+                  <div class="sport-icon">
+                     <i class="fas fa-${game.icon}"></i>
+                  </div>
+               </div>
+               <div class="card-content">
+                  <h3 class="card-title">${game.title}</h3>
+                  <div class="card-details">
+                     <div class="card-info">
+                        <div class="info-item">
+                           <i class="fas fa-map-marker-alt"></i>
+                           <span>${game.location}</span>
+                        </div>
+                        <div class="info-item">
+                           <i class="fas fa-calendar-alt"></i>
+                           <span>${game.date}</span>
+                        </div>
+                        ${game.fee ? `
+                        <div class="info-item">
+                           <i class="fas fa-rupee-sign"></i>
+                           <span>${game.fee}/-</span>
+                        </div>
+                        ` : ''}
+                     </div>
+                     <div class="card-action">
+                        <button class="action-btn" onclick{} title="View Details">
+
+                           <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <span class="status-badge status-${game.status}">
+                           ${game.status}
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         `;
+      }
+
+      function filterGames(games) {
+         return games.filter(game => {
+            const matchesSearch = !searchTerm || 
+               game.title.toLowerCase().includes(searchTerm) ||
+               game.location.toLowerCase().includes(searchTerm);
+            
+            const matchesLocation = !locationFilter || game.location === locationFilter;
+            
+            return matchesSearch && matchesLocation;
+         });
+      }
+
+      function renderGames() {
+         const games = gamesData[currentFilter];
+         const filteredGames = filterGames(games);
+         const container = document.getElementById(`${currentFilter}Container`);
+         
+         if (filteredGames.length === 0) {
+            container.innerHTML = '';
+            emptyState.style.display = 'block';
+            return;
+         }
+
+         emptyState.style.display = 'none';
+         container.innerHTML = filteredGames.map(createGameCard).join('');
+         
+         const countElement = document.querySelector(`#${currentFilter}-games .game-count`);
+         if (countElement) {
+            countElement.textContent = `${filteredGames.length} games ${currentFilter === 'ongoing' ? 'available' : 
+               currentFilter === 'upcoming' ? 'scheduled' : 'completed'}`;
+         }
+      }
+
+      function filterAndRenderGames() {
+         loadingState.style.display = 'block';
+         document.querySelector(`#${currentFilter}-games .card-container`).style.display = 'none';
+         
+         setTimeout(() => {
+            renderGames();
+            loadingState.style.display = 'none';
+            document.querySelector(`#${currentFilter}-games .card-container`).style.display = 'grid';
+         }, 300);
+      }
+
+      function handleCardClick(title, location) {
+         event.currentTarget.style.transform = 'scale(0.95)';
+         setTimeout(() => {
+            event.currentTarget.style.transform = '';
+         }, 150);
+
+         alert(`Opening details for ${title} in ${location}.\n\nThis would typically navigate to a detailed game page.`);
+      }
+
+      document.documentElement.style.scrollBehavior = 'smooth';
+
+      document.getElementById('ongoingContainer').innerHTML = '';
+      document.getElementById('upcomingContainer').innerHTML = '';
+      document.getElementById('pastContainer').innerHTML = '';
+   </script>
+</body>
+
+</html>

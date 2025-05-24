@@ -1,0 +1,77 @@
+body {
+   background-color: white;
+   color: black;
+   margin: 0px;
+}
+
+h1 {
+   padding: 25px;
+   margin: 0px;
+   background-color: black;
+   color: white;
+   text-align: center;
+   font: bold 50px 'Arial', sans-serif;
+}
+
+#card-container {
+   border-top: 1px solid grey;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card {
+   padding: 20px 0px;
+   font-size: 25px;
+   background-color: black;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.card>span {
+   cursor: pointer;
+}
+
+.card-content {
+   background-color: grey;
+   height: 730px;
+   /* change height as per content */
+   margin: 8px 45px;
+   border-radius: 0px 0px 20px 20px;
+}
+
+.card-content>h1 {
+   font-size: 25x;
+   background-color: rgb(31, 30, 30);
+}
+
+.card-content>h2 {
+   font-size: 25px;
+   display: block;
+   text-align: center;
+}
+
+.event-content {
+   padding: 0px 50px;
+   gap: 20px;
+   /* border: 3px solid black; */
+   display: grid;
+   grid-template-columns: 2fr 4fr;
+}
+
+.event-name {
+   padding: 20px;
+   font-size: 1.5rem;
+   border: 2px solid rgb(78, 78, 78);
+   background-color: white;
+   height: 400px;
+}
+
+.event-detail {
+   padding: 20px;
+   font-size: 1.5rem;
+   border: 2px solid rgb(78, 78, 78);
+   height: 400px;
+   background-color: white;
+}

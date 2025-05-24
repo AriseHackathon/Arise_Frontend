@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>About GAMESGRID</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* About Page Styles */
+    #about {
+      padding: 80px 20px;
+      background-color: #fafafa;
+    }
+
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    h2 {
+      font-size: 3rem;
+      text-align: center;
+      color: #FF6F00; /* Accent Color */
+      margin-bottom: 60px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 2.2rem;
+      color: #333;
+      margin-bottom: 25px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .section {
+      margin-bottom: 60px; /* Increased margin for spacing between sections */
+    }
+
+    /* Overview and Why Created Sections */
+    #overview, #why-created {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    #overview:hover, #why-created:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    #overview p, #why-created p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    /* Team Members Section */
+    .team-members {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px; /* Adds space between team cards */
+      margin-top: 30px;
+    }
+
+    .team-card {
+      background-color: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-member-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .team-card h4 {
+      font-size: 1.3rem;
+      color: #FF6F00; /* Accent Color */
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    .team-card p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Call to Action Section */
+    .cta-section {
+      text-align: center;
+      margin-top: 50px;
+      background-color: #FF6F00;
+      padding: 40px;
+      color: white;
+      border-radius: 12px;
+    }
+
+    .cta-section p {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      .team-members {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .team-card {
+        width: 90%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- About Page Section -->
+<section id="about">
+  <div class="about-container">
+    <h2>About GAMESGRID</h2>
+
+    <!-- Overview Section -->
+    <div class="section" id="overview">
+      <h3><b>Overview</b></h3>
+      <p>GAMESGRID is a revolutionary one-stop platform dedicated to providing comprehensive information on sports tournaments and training opportunities across India. Our mission is to make sports information universally accessible, ensuring that athletes, coaches, and sports enthusiasts can easily find and participate in events that suit their interests and needs. With a focus on real-time updates and verified listings, GAMESGRID aims to bridge the gap in the fragmented sports information landscape.</p>
+    </div>
+
+    <!-- Why We Created Section -->
+    <div class="section" id="why-created">
+      <h3><b>Why We Created GAMESGRID</b></h3>
+      <p>The inspiration behind GAMESGRID stems from the realization that there is currently no centralized platform that encompasses all sports in India. The overwhelming popularity of cricket has overshadowed many other sports, leading to a lack of awareness and promotion for various athletic activities. We recognized the need for a unified system that not only highlights cricket but also showcases a wide range of sports, ensuring that every athlete, regardless of their chosen discipline, has access to the information they need to thrive.</p>
+    </div>
+
+    <!-- Our Team Section -->
+    <div class="section" id="our-team">
+      <h3><b>Our Team</b></h3>
+      <div class="team-members">
+        <div class="team-card">
+          <img src="https://via.placeholder.com/250" alt="Nikhil Kumar" class="team-member-img">
+          <h4>Nikhil Kumar</h4>
+          <p>Backend Developer</p>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/250" alt="Abhinash Nayak" class="team-member-img">
+          <h4>Abhinash Nayak</h4>
+          <p>Frontend Developer</p>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/250" alt="Nupur Jaiswal" class="team-member-img">
+          <h4>Nupur Jaiswal</h4>
+          <p>UI/UX Designer</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="cta-section">
+      <p>Join us on our journey! Explore GAMESGRID and become part of our community, where every athlete, coach, and sports enthusiast can connect and grow.</p>
+      <br>        <h6>Have questions? Reach out to us at: <strong>mail@gmail.com</strong></h6>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

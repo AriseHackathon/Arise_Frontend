@@ -1,0 +1,222 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+#hero {
+  background: url('images/hero-background.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(5, 5, 5);
+  text-align: center;
+}
+#hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-images {
+  display: flex;
+  width: 300%;
+  animation: scrollImages 15s infinite linear;
+}
+
+.hero-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+@keyframes scrollImages {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  padding: 15px 30px;
+  background-color: #FF6F00;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 5px;
+  position: relative;
+  top: 50px;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.cta-button {
+  padding: 15px ;
+  background-color: #FF6F00; /* Accent Color 1 */
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#features {
+  background-color: #ffa734;
+  padding: 50px 0;
+  position: static ;
+}
+
+.features-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  
+}
+
+.feature-card {
+  background-color: #FFFFFF;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: scroll;
+  gap: 15px;
+}
+
+.scroll-container div {
+  background-color: #FFFFFF;
+  width: 150px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+#training-camps {
+  background-color: #f0f0f0;
+  padding: 30px 0;
+    text-align: center;
+}
+
+#blog {
+  padding: 50px 0;
+  background-color: #ffa734;
+  text-align: center;
+}
+#upcoming-events {
+  padding: 50px 0;
+  text-align: center;
+}
+#sports-academics {
+  background-color: #ffa734;
+  padding: 50px 0;
+  text-align: center;
+}
+#feedback {
+  padding: 50px 0;
+  text-align: center;
+}
+
+form input, form textarea {
+  width: 40%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+#footer {
+  background-color: #ffa734;
+  padding: 20px 0;
+  text-align: center;
+}
+/* FAQ Section Styling */
+#faq {
+  background-color: #f4f4f4; /* Light background for the FAQ section */
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faq-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333333; /* Dark text for the title */
+}
+
+.faq-item {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.faq-question h3 {
+  font-size: 1.5rem;
+  color: #FF6F00; /* Accent color for the question */
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.faq-question h3:hover {
+  color: #e35d00; /* Slightly darker accent color on hover */
+}
+
+.faq-answer p {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #555555; /* Slightly lighter text for the answer */
+}
+
+.faq-item:last-child {
+  margin-bottom: 0; /* Remove bottom margin for the last item */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .faq-container h2 {
+    font-size: 2rem;
+  }
+
+  .faq-item {
+    padding: 15px;
+  }
+
+  .faq-question h3 {
+    font-size: 1.2rem;
+  }
+
+  .faq-answer p {
+    font-size: 0.9rem;
+  }
+}
