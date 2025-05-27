@@ -1,70 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GAMESGRID - Blog</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GAMESGRID - Blog</title>
 
-<link rel="stylesheet" href="./styles/blog.css">
+  <link rel="stylesheet" href="./styles/blog.css">
 
+  <!-- header&footer -->
+  <link rel="stylesheet" href="./styles/header.css">
+  <link rel="stylesheet" href="./styles/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-<nav>
-  <a href="#updates">New Updates</a>
-  <a href="#testimonials">Testimonials</a>
-  <a href="#contact">Contact</a>
-</nav>
 
-<main>
-  <section id="updates">
-    <h2>Latest Offline Sports Updates</h2>
-    <div class="updates">
-      <article class="update-card">
-        <h3 class="update-title">Local Football League Returns This Summer</h3>
-        <time class="update-date" datetime="2024-06-10">June 10, 2024</time>
-        <p class="update-content">The annual local football league is back with a refreshed schedule and enhanced safety measures to ensure community sports thrive in offline events.</p>
-      </article>
-      <article class="update-card">
-        <h3 class="update-title">New Tennis Courts Open in City Park</h3>
-        <time class="update-date" datetime="2024-05-25">May 25, 2024</time>
-        <p class="update-content">Residents now have access to state-of-the-art tennis courts in City Park, perfect for enthusiasts and beginners alike to enjoy the offline sport experience.</p>
-      </article>
-      <article class="update-card">
-        <h3 class="update-title">Annual Basketball Tournament Scheduled for July</h3>
-        <time class="update-date" datetime="2024-06-01">June 1, 2024</time>
-        <p class="update-content">Teams from across the region will compete in the highly anticipated annual basketball tournament set for mid-July. Registration ends June 20.</p>
-      </article>
+  <!-- header -->
+
+  <div class="header">
+    <header>
+      <div class="logo">GAMESGRID</div>
+      <nav class="header-nav">
+        <a href="./index.html"><button type="button" aria-label="Home">Home</button></a>
+        <a href="./games-page.html">
+          <button type="button" aria-label="Events">Events</button>
+        </a>
+        <a href="./library.html">
+          <button type="button" aria-label="Library">Library</button>
+        </a>
+        <a href="./blog.html">
+          <button type="button" aria-label="Blog">Blog</button>
+        </a>
+        <a href="./about.html">
+          <button type="button" aria-label="About">About</button>
+        </a>
+        <a href="./login.html">
+          <button type="button" aria-label="Signup" class="signup">Signup</button>
+        </a>
+      </nav>
+    </header>
+  </div>
+
+  <nav>
+    <a href="#updates">New Updates</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="updates">
+      <h2>Latest Offline Sports Updates</h2>
+      <div class="updates">
+        <article class="update-card">
+          <h3 class="update-title">Local Football League Returns This Summer</h3>
+          <time class="update-date" datetime="2024-06-10">June 10, 2024</time>
+          <p class="update-content">The annual local football league is back with a refreshed schedule and enhanced
+            safety measures to ensure community sports thrive in offline events.</p>
+        </article>
+        <article class="update-card">
+          <h3 class="update-title">New Tennis Courts Open in City Park</h3>
+          <time class="update-date" datetime="2024-05-25">May 25, 2024</time>
+          <p class="update-content">Residents now have access to state-of-the-art tennis courts in City Park, perfect
+            for enthusiasts and beginners alike to enjoy the offline sport experience.</p>
+        </article>
+        <article class="update-card">
+          <h3 class="update-title">Annual Basketball Tournament Scheduled for July</h3>
+          <time class="update-date" datetime="2024-06-01">June 1, 2024</time>
+          <p class="update-content">Teams from across the region will compete in the highly anticipated annual
+            basketball tournament set for mid-July. Registration ends June 20.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial-cards">
+        <blockquote class="testimonial-card">
+          <p class="testimonial-text">GAMESGRID has transformed the way I find offline sports events in my city. The
+            updates are always timely and relevant!</p>
+          <footer class="testimonial-author">— Aditya Mishra.</footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <p class="testimonial-text">Thanks to GAMESGRID, I’ve met so many fellow sports lovers and discovered new
+            offline activities to join. Highly recommend!</p>
+          <footer class="testimonial-author">— Priya Kumari</footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <p class="testimonial-text">An excellent platform for offline sports enthusiasts. The testimonials and updates
+            keep the community connected and energized.</p>
+          <footer class="testimonial-author">— Silvy jain.</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <p>If you have offline sports events, updates, or testimonials you'd like to share, reach out to us!</p>
+      <p>Email: <a href="mailto:contact@gamesgrid.com">contact@gamesgrid.com</a></p>
+      <p>Follow us on social media for more updates and live announcements.</p>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo" aria-label="Website Logo and privacy policy links">
+        <img src="./assets/Group 1.png " alt="Website Logo" />
+      </div>
+      <div class="footer-container">
+        <!-- Follow Us -->
+        <div class="follow-us" aria-label="Follow us section">
+          <h3>Follow us</h3>
+          <div class="social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Linkedin">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Useful Links -->
+        <nav class="useful-links" aria-label="Useful links navigation">
+          <h3>Useful Links</h3>
+          <a href="#home" tabindex="0">Home</a>
+          <a href="#about" tabindex="0">About</a>
+          <a href="#blogs" tabindex="0">Blogs</a>
+          <a href="#events" tabindex="0">Events</a>
+          <a href="#library" tabindex="0">Library</a>
+        </nav>
+
+        <!-- Contact Information -->
+        <section class="contact" aria-label="Contact information">
+          <h3>Contact</h3>
+          <div>Location: India</div>
+          <a href="mailto:contact@example.com" tabindex="0">Gmail: contact@example.com</a>
+          <div>Phone: +91 xxxxxxxxx</div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <div class="signup-container" aria-label="Subscribe section with email input">
+          <input type="email" placeholder="Enter your email" aria-label="Email address for subscription" />
+          <button id="subscribeBtn" aria-label="Subscribe for newsletter or updates">Subscribe</button>
+        </div>
+
+      </div>
     </div>
-  </section>
-
-  <section id="testimonials" class="testimonials">
-    <h2>What Our Users Say</h2>
-    <div class="testimonial-cards">
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">GAMESGRID has transformed the way I find offline sports events in my city. The updates are always timely and relevant!</p>
-        <footer class="testimonial-author">— Aditya Mishra.</footer>
-      </blockquote>
-
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">Thanks to GAMESGRID, I’ve met so many fellow sports lovers and discovered new offline activities to join. Highly recommend!</p>
-        <footer class="testimonial-author">— Priya Kumari</footer>
-      </blockquote>
-
-      <blockquote class="testimonial-card">
-        <p class="testimonial-text">An excellent platform for offline sports enthusiasts. The testimonials and updates keep the community connected and energized.</p>
-        <footer class="testimonial-author">— Silvy jain.</footer>
-      </blockquote>
+    <div class="footer-bottom" aria-label="Footer bottom text">
+      <p>&copy; 2025 GAMESGRID. All rights reserved.</p>
     </div>
-  </section>
-
-  <section id="contact">
-    <h2>Get In Touch</h2>
-    <p>If you have offline sports events, updates, or testimonials you'd like to share, reach out to us!</p>
-    <p>Email: <a href="mailto:contact@gamesgrid.com">contact@gamesgrid.com</a></p>
-    <p>Follow us on social media for more updates and live announcements.</p>
-  </section>
-</main>
+  </footer>
 
 </body>
-</html>
 
+</html>
