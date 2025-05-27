@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    nav {
+      background: #facc15; 
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav input {
+      margin-left: auto;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .container {
+      display: flex;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      gap: 2rem;
+    }
+
+    .posts {
+      width: 75%;
+    }
+
+    .sidebar {
+      width: 25%;
+    }
+
+    .post {
+      background: #f3f4f6;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .post img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    .read-more {
+      color: #2563eb;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .full-post {
+      background: white;
+      padding: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    .sidebar .card {
+      background: linear-gradient(to right, #8b5cf6, #6366f1);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .sidebar .card button {
+      background: #facc15;
+      color: #4c1d95;
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span>Recent Posts</span>
+    <span>Popular Posts</span>
+    <span>Categories</span>
+    <span>Subscribe</span>
+    <input type="text" id="searchInput" placeholder="Search by Title...">
+  </nav>
+
+  <div class="container">
+    <div class="posts">
+      <h2>Recent Blog Posts</h2>
+      <div id="postList"></div>
+      <div id="fullPostContainer"></div>
+    </div>
+
+    <div class="sidebar">
+      <h2>Start Writing</h2>
+      <div class="card">
+        <div style="font-size: 48px;">🖊️</div>
+        <h3>Share Your Story</h3>
+        <p>Have a unique perspective or exciting experience to share? Create your own blog post and inspire others!</p>
+        <button> Create New Post</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const posts = [
+      {
+        _id: '1',
+        title: 'basics',
+        description: '',
+        content: '',
+        image: ''
+      },
+      {
+        _id: '2',
+        title: 'basics',
+        description: '',
+        content: '',
+        image: ''
+      }
+    ];
+
+    const postList = document.getElementById('postList');
+    const fullPostContainer = document.getElementById('fullPostContainer');
+    const searchInput = document.getElementById('searchInput');
+
+    function renderPosts(filteredPosts) {
+      postList.innerHTML = '';
+      fullPostContainer.innerHTML = '';
+      filteredPosts.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+        postDiv.innerHTML = `
+          <img src="${post.image || 'https://via.placeholder.com/80'}" alt="Post Image">
+          <div>
+            <h3>${post.title}</h3>
+            <p>${post.description}</p>
+            <span class="read-more" onclick="readMore('${post._id}')">Read More</span>
+          </div>
+        `;
+        postList.appendChild(postDiv);
+      });
+    }
+
+    function readMore(id) {
+      const post = posts.find(p => p._id === id);
+      fullPostContainer.innerHTML = `
+        <div class="full-post">
+          <h2>${post.title}</h2>
+          <p>${post.content}</p>
+          <span class="read-more" onclick="closePost()">Close</span>
+        </div>
+      `;
+    }
+
+    function closePost() {
+      fullPostContainer.innerHTML = '';
+    }
+
+    searchInput.addEventListener('input', () => {
+      const keyword = searchInput.value.toLowerCase();
+      const filtered = posts.filter(post => post.title.toLowerCase().includes(keyword));
+      renderPosts(filtered);
+    });
+
+
+    renderPosts(posts);
+  </script>
+
+</body>
+</html>
