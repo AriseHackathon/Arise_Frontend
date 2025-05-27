@@ -1,0 +1,151 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Arial', sans-serif;
+   background-color: #fafafa;
+   color: #333;
+   line-height: 1.6;
+   padding: 0;
+   margin: 0;
+}
+
+/* About Page Styles */
+#about {
+   padding: 80px 20px;
+   background-color: #fafafa;
+}
+
+.about-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+h2 {
+   font-size: 3rem;
+   text-align: center;
+   color: #FF6F00;
+   /* Accent Color */
+   margin-bottom: 60px;
+   font-weight: 600;
+}
+
+h3 {
+   font-size: 2.2rem;
+   color: #333;
+   margin-bottom: 25px;
+   text-align: center;
+   font-weight: 500;
+}
+
+.section {
+   margin-bottom: 60px;
+   /* Increased margin for spacing between sections */
+}
+
+/* Overview and Why Created Sections */
+#overview,
+#why-created {
+   background-color: white;
+   padding: 40px;
+   border-radius: 10px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+   transition: box-shadow 0.3s ease;
+   text-align: center;
+}
+
+#overview:hover,
+#why-created:hover {
+   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+#overview p,
+#why-created p {
+   font-size: 1.1rem;
+   color: #555;
+   line-height: 1.8;
+   margin-top: 20px;
+}
+
+/* Team Members Section */
+.team-members {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   gap: 30px;
+   /* Adds space between team cards */
+   margin-top: 30px;
+}
+
+.team-card {
+   background-color: white;
+   padding: 30px;
+   text-align: center;
+   border-radius: 12px;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+   width: 280px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.team-member-img {
+   width: 100%;
+   height: auto;
+   border-radius: 8px;
+   object-fit: cover;
+   margin-bottom: 20px;
+}
+
+.team-card h4 {
+   font-size: 1.3rem;
+   color: #FF6F00;
+   /* Accent Color */
+   margin-top: 15px;
+   font-weight: 500;
+}
+
+.team-card p {
+   font-size: 1.1rem;
+   color: #555;
+}
+
+/* Call to Action Section */
+.cta-section {
+   text-align: center;
+   margin-top: 50px;
+   background-color: #FF6F00;
+   padding: 40px;
+   color: white;
+   border-radius: 12px;
+}
+
+.cta-section p {
+   font-size: 1.5rem;
+   margin: 0;
+   font-weight: 500;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+   h2 {
+      font-size: 2.5rem;
+   }
+
+   .team-members {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .team-card {
+      width: 90%;
+      margin-bottom: 20px;
+   }
+}
