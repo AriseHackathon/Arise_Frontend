@@ -1,141 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Blog Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GAMESGRID - Blog</title>
 
-    nav {
-      background: #facc15; 
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+<link rel="stylesheet" href="blog.css">
 
-    nav input {
-      margin-left: auto;
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .container {
-      display: flex;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-      gap: 2rem;
-    }
-
-    .posts {
-      width: 75%;
-    }
-
-    .sidebar {
-      width: 25%;
-    }
-
-    .post {
-      background: #f3f4f6;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 1rem;
-    }
-
-    .post img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-    }
-
-    .read-more {
-      color: #2563eb;
-      cursor: pointer;
-      margin-top: 10px;
-      display: inline-block;
-    }
-
-    .full-post {
-      background: white;
-      padding: 1rem;
-      border: 1px solid #ddd;
-    }
-
-    .sidebar .card {
-      background: linear-gradient(to right, #8b5cf6, #6366f1);
-      color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .sidebar .card button {
-      background: #facc15;
-      color: #4c1d95;
-      padding: 0.7rem 1rem;
-      border: none;
-      border-radius: 50px;
-      font-weight: bold;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body>
+<nav>
+  <a href="#updates">New Updates</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <nav>
-    <span>Recent Posts</span>
-    <span>Popular Posts</span>
-    <span>Categories</span>
-    <span>Subscribe</span>
-    <input type="text" id="searchInput" placeholder="Search by Title...">
-  </nav>
-
-  <div class="container">
-    <div class="posts">
-      <h2>Recent Blog Posts</h2>
-      <div id="postList"></div>
-      <div id="fullPostContainer"></div>
+<main>
+  <section id="updates">
+    <h2>Latest Offline Sports Updates</h2>
+    <div class="updates">
+      <article class="update-card">
+        <h3 class="update-title">Local Football League Returns This Summer</h3>
+        <time class="update-date" datetime="2024-06-10">June 10, 2024</time>
+        <p class="update-content">The annual local football league is back with a refreshed schedule and enhanced safety measures to ensure community sports thrive in offline events.</p>
+      </article>
+      <article class="update-card">
+        <h3 class="update-title">New Tennis Courts Open in City Park</h3>
+        <time class="update-date" datetime="2024-05-25">May 25, 2024</time>
+        <p class="update-content">Residents now have access to state-of-the-art tennis courts in City Park, perfect for enthusiasts and beginners alike to enjoy the offline sport experience.</p>
+      </article>
+      <article class="update-card">
+        <h3 class="update-title">Annual Basketball Tournament Scheduled for July</h3>
+        <time class="update-date" datetime="2024-06-01">June 1, 2024</time>
+        <p class="update-content">Teams from across the region will compete in the highly anticipated annual basketball tournament set for mid-July. Registration ends June 20.</p>
+      </article>
     </div>
+  </section>
 
-    <div class="sidebar">
-      <h2>Start Writing</h2>
-      <div class="card">
-        <div style="font-size: 48px;">🖊️</div>
-        <h3>Share Your Story</h3>
-        <p>Have a unique perspective or exciting experience to share? Create your own blog post and inspire others!</p>
-        <button> Create New Post</button>
-      </div>
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-cards">
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">GAMESGRID has transformed the way I find offline sports events in my city. The updates are always timely and relevant!</p>
+        <footer class="testimonial-author">— Aditya Mishra.</footer>
+      </blockquote>
+
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">Thanks to GAMESGRID, I’ve met so many fellow sports lovers and discovered new offline activities to join. Highly recommend!</p>
+        <footer class="testimonial-author">— Priya Kumari</footer>
+      </blockquote>
+
+      <blockquote class="testimonial-card">
+        <p class="testimonial-text">An excellent platform for offline sports enthusiasts. The testimonials and updates keep the community connected and energized.</p>
+        <footer class="testimonial-author">— Silvy jain.</footer>
+      </blockquote>
     </div>
-  </div>
+  </section>
 
-  <script>
-let posts = [];
-
-const API_BASE = 'https://arise-backend-m9zz.onrender.com'; 
-
-async function fetchPosts() {
-  try {
-    const response = await fetch(`${API_BASE}/posts`);
-    if (!response.ok) throw new Error('Failed to fetch posts');
-    posts = await response.json();
-    renderPosts(posts);
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    document.getElementById('postList').innerHTML = '<div class="error">Failed to load posts</div>';
-  }
-}
-
-// Call fetchPosts when page loads
-document.addEventListener('DOMContentLoaded', fetchPosts);
-  </script>
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>If you have offline sports events, updates, or testimonials you'd like to share, reach out to us!</p>
+    <p>Email: <a href="mailto:contact@gamesgrid.com">contact@gamesgrid.com</a></p>
+    <p>Follow us on social media for more updates and live announcements.</p>
+  </section>
+</main>
 
 </body>
 </html>
+
