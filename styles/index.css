@@ -20,25 +20,6 @@ body {
   overflow: hidden;
 }
 
-.hero-images {
-  display: flex;
-  width: 300%;
-  animation: scrollImages 15s infinite linear;
-}
-
-.hero-image {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-}
-
-@keyframes scrollImages {
-  0% { transform: translateX(0); }
-  33% { transform: translateX(-100%); }
-  66% { transform: translateX(-200%); }
-  100% { transform: translateX(0); }
-}
-
 .hero-content {
   position: absolute;
   top: 50%;
