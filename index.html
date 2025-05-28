@@ -5,143 +5,241 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GAMESGRID</title>
+
+  <!-- header&footer -->
+  <link rel="stylesheet" href="./styles/header.css">
+  <link rel="stylesheet" href="./styles/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="./styles/index.css">
 </head>
 
 <body>
 
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Leave No Competition Behind with GAMESGRID!</h1>
-      <h6>Stay updated with the latest sports events and tournaments across India.</h6>
-      <h6>Join our community of sports enthusiasts and never miss a game!</h6>
-      <a href="./login.html" class="cta-button"><b>Sign Up Today</b></a>
+  <!-- header -->
+
+  <div id="header">
+    <header>
+      <div class="logo">GAMESGRID</div>
+      <nav id="header-nav">
+        <a href="./index.html"><button type="button" aria-label="Home">Home</button></a>
+        <a href="./games-page.html">
+          <button type="button" aria-label="Events">Events</button>
+        </a>
+        <a href="./library.html">
+          <button type="button" aria-label="Library">Library</button>
+        </a>
+        <a href="./blog.html">
+          <button type="button" aria-label="Blog">Blog</button>
+        </a>
+        <a href="./about.html">
+          <button type="button" aria-label="About">About</button>
+        </a>
+        <a href="./login.html">
+          <button type="button" aria-label="Signup" class="signup">Signup</button>
+        </a>
+      </nav>
+    </header>
+  </div>
+
+  <div id="page-content">
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Leave No Competition Behind with GAMESGRID!</h1>
+        <h6>Stay updated with the latest sports events and tournaments across India.</h6>
+        <h6>Join our community of sports enthusiasts and never miss a game!</h6>
+        <a href="./login.html" class="cta-button"><b>Sign Up Today</b></a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+      <div class="features-container">
+        <div class="feature-card">
+          <h3>Tournament/Sport Event Listings</h3>
+          <p>Find events across India</p>
+        </div>
+        <div class="feature-card">
+          <h3>Real-Time Updates</h3>
+          <p>Stay updated with the latest scores</p>
+        </div>
+        <div class="feature-card">
+          <h3>All Sports Coverage</h3>
+          <p>From popular to niche sports</p>
+        </div>
+        <div class="feature-card">
+          <h3>Explore Sports Academics</h3>
+          <p>Find top-tier training camps in India</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="training-camps">
+      <div class="training-camps">
+        <h1>Explore Training Camps Across India</h1>
+        html_code='''
+        <div class="scroll-container">
+          <!-- Add links or content here for training camps -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+      <h2>Latest Blogs</h2>
+      <div class="blog-container">
+        html_code='''
+        <!-- Space for future blog entries -->
+      </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="upcoming-events">
+      <h2>Upcoming Events</h2>
+      <div class="events-container">
+        html_code='''
+        <!-- Space for code/link to events -->
+      </div>
+    </section>
+
+    <!-- Sports Academics Section -->
+    <section id="sports-academics">
+      <h2>Sports Academics</h2>
+      <div class="academics-container">
+        html_code='''
+        <!-- Space for code/link -->
+      </div>
+    </section>
+    <!-- FAQ Section -->
+    <section id="faq">
+      <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is GAMESGRID?</h3>
+          </div>
+          <div class="faq-answer">
+            <p>GAMESGRID is a unified sports platform designed to meet all athletes' needs, from event listings to
+              training camps.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What features does GAMESGRID offer?</h3>
+          </div>
+          <div class="faq-answer">
+            <p>GAMESGRID offers tournament listings, real-time updates, sports academics, and a directory of training
+              camps across India.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How much does it cost to use GAMESGRID?</h3>
+          </div>
+          <div class="faq-answer">
+            <p>GAMESGRID is completely free to use. There are no costs involved.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I find sports events for all types of sports on GAMESGRID?</h3>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, GAMESGRID covers a wide variety of sports, not just the popular ones.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How can I join a training camp listed on GAMESGRID?</h3>
+          </div>
+          <div class="faq-answer">
+            <p>Simply explore the training camps section and follow the instructions for registration provided for each
+              camp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback">
+      <h2>We Value Your Feedback!</h2>
+      <form id="feedback-form" method="post">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="email" name="email" placeholder="Your Email" required><br>
+        <textarea name="feedback" placeholder="Your Feedback" required></textarea><br>
+        <button type="submit" id="cta-button" class="cta-button">Submit Feedback</button>
+      </form>
+    </section>
+  </div>
+
+
+  <!-- footer -->
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo" aria-label="Website Logo and privacy policy links">
+        <img src="./assets/Group 1.png " alt="Website Logo" />
+      </div>
+      <div class="footer-container">
+        <!-- Follow Us -->
+        <div class="follow-us" aria-label="Follow us section">
+          <h3>Follow us</h3>
+          <div class="social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Linkedin">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Useful Links -->
+        <nav class="useful-links" aria-label="Useful links navigation">
+          <h3>Useful Links</h3>
+          <a href="#home" tabindex="0">Home</a>
+          <a href="#about" tabindex="0">About</a>
+          <a href="#blogs" tabindex="0">Blogs</a>
+          <a href="#events" tabindex="0">Events</a>
+          <a href="#library" tabindex="0">Library</a>
+        </nav>
+
+        <!-- Contact Information -->
+        <section class="contact" aria-label="Contact information">
+          <h3>Contact</h3>
+          <div>Location: India</div>
+          <a href="mailto:contact@example.com" tabindex="0">Gmail: contact@example.com</a>
+          <div>Phone: +91 xxxxxxxxx</div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <div class="signup-container" aria-label="Subscribe section with email input">
+          <input type="email" placeholder="Enter your email" aria-label="Email address for subscription" />
+          <button id="subscribeBtn" aria-label="Subscribe for newsletter or updates">Subscribe</button>
+        </div>
+
+      </div>
     </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features">
-    <div class="features-container">
-      <div class="feature-card">
-        <h3>Tournament/Sport Event Listings</h3>
-        <p>Find events across India</p>
-      </div>
-      <div class="feature-card">
-        <h3>Real-Time Updates</h3>
-        <p>Stay updated with the latest scores</p>
-      </div>
-      <div class="feature-card">
-        <h3>All Sports Coverage</h3>
-        <p>From popular to niche sports</p>
-      </div>
-      <div class="feature-card">
-        <h3>Explore Sports Academics</h3>
-        <p>Find top-tier training camps in India</p>
-      </div>
+    <div class="footer-bottom" aria-label="Footer bottom text">
+      <p>&copy; 2025 GAMESGRID. All rights reserved.</p>
     </div>
-  </section>
+  </footer>
 
-  <section id="training-camps">
-    <div class="training-camps">
-      <h1>Explore Training Camps Across India</h1>
-      html_code='''
-      <div class="scroll-container">
-        <!-- Add links or content here for training camps -->
-      </div>
-    </div>
-  </section>
 
-  <!-- Blog Section -->
-  <section id="blog">
-    <h2>Latest Blogs</h2>
-    <div class="blog-container">
-      html_code='''
-      <!-- Space for future blog entries -->
-    </div>
-  </section>
-
-  <!-- Upcoming Events Section -->
-  <section id="upcoming-events">
-    <h2>Upcoming Events</h2>
-    <div class="events-container">
-      html_code='''
-      <!-- Space for code/link to events -->
-    </div>
-  </section>
-
-  <!-- Sports Academics Section -->
-  <section id="sports-academics">
-    <h2>Sports Academics</h2>
-    <div class="academics-container">
-      html_code='''
-      <!-- Space for code/link -->
-    </div>
-  </section>
-  <!-- FAQ Section -->
-  <section id="faq">
-    <div class="faq-container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>What is GAMESGRID?</h3>
-        </div>
-        <div class="faq-answer">
-          <p>GAMESGRID is a unified sports platform designed to meet all athletes' needs, from event listings to
-            training camps.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>What features does GAMESGRID offer?</h3>
-        </div>
-        <div class="faq-answer">
-          <p>GAMESGRID offers tournament listings, real-time updates, sports academics, and a directory of training
-            camps across India.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>How much does it cost to use GAMESGRID?</h3>
-        </div>
-        <div class="faq-answer">
-          <p>GAMESGRID is completely free to use. There are no costs involved.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>Can I find sports events for all types of sports on GAMESGRID?</h3>
-        </div>
-        <div class="faq-answer">
-          <p>Yes, GAMESGRID covers a wide variety of sports, not just the popular ones.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>How can I join a training camp listed on GAMESGRID?</h3>
-        </div>
-        <div class="faq-answer">
-          <p>Simply explore the training camps section and follow the instructions for registration provided for each
-            camp.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Feedback Section -->
-  <section id="feedback">
-    <h2>We Value Your Feedback!</h2>
-    <form id="feedback-form" method="post">
-      <input type="text" name="name" placeholder="Your Name" required><br>
-      <input type="email" name="email" placeholder="Your Email" required><br>
-      <textarea name="feedback" placeholder="Your Feedback" required></textarea><br>
-      <button type="submit" id="cta-button" class="cta-button">Submit Feedback</button>
-    </form>
-  </section>
+  <!-- landing-page script -->
 
   <script>
     // Wait until the DOM is fully loaded

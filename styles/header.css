@@ -13,7 +13,7 @@ header {
   height: 60px;
 }
 
-.header {
+#header {
   background-color: none;
   /* box-shadow not working */
 }
@@ -25,13 +25,14 @@ header {
   user-select: none;
 }
 
-.header-nav {
+#header-nav {
   display: flex;
   gap: 20px;
   align-items: center;
+  background-color: white;
 }
 
-.header-nav button {
+#header-nav button {
   background: transparent;
   border: none;
   color: black;
@@ -42,19 +43,19 @@ header {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.header-nav button:hover {
+#header-nav button:hover {
   color: #ff6a00;
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
 
-.header-nav button:focus {
+#header-nav button:focus {
   outline: 2px solid #fff;
   outline-offset: 4px;
 }
 
 /* Distinct style for Signup button */
-.header-nav button.signup {
+#header-nav button.signup {
   background-color: #ff5722;
   color: #fff;
   font-weight: 700;
@@ -63,8 +64,8 @@ header {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.header-nav button.signup:hover,
-.header-nav button.signup:focus {
+#header-nav button.signup:hover,
+#header-nav button.signup:focus {
   background-color: #fff;
   color: #ff5722;
   border-color: #ff5722;
