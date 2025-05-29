@@ -73,39 +73,8 @@ h2 {
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
 }
 
-.update-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-  padding: 1rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
 
-.update-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
-}
 
-.update-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #40739e;
-}
-
-.update-date {
-  font-size: 0.85rem;
-  color: #718093;
-  margin-bottom: 1rem;
-}
-
-.update-content {
-  flex-grow: 1;
-  color: #353b48;
-  font-size: 1rem;
-}
 
 /* Testimonials */
 .testimonials {
@@ -296,5 +265,109 @@ h2 {
   
   .blog-form {
     max-width: 100%;
+  }
+}
+
+
+/* Updated Blog Updates Section */
+.updates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.update-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.update-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.update-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #40739e;
+  line-height: 1.3;
+}
+
+.update-date {
+  font-size: 0.9rem;
+  color: #718093;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.update-content {
+  flex-grow: 1;
+  color: #353b48;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.post-content {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e1e5e9;
+  color: #2f3640;
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.post-content.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.read-more-btn {
+  background: linear-gradient(135deg, #40739e, #487eb0);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: auto;
+  box-shadow: 0 2px 8px rgba(64, 115, 158, 0.3);
+}
+
+.read-more-btn:hover {
+  background: linear-gradient(135deg, #2c5282, #40739e);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(64, 115, 158, 0.4);
+}
+
+.read-more-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .updates {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .update-card {
+    padding: 1.2rem;
   }
 }
