@@ -56,24 +56,7 @@
     <section id="updates">
       <h2>Latest Offline Sports Updates</h2>
       <div class="updates">
-        <article class="update-card">
-          <h3 class="update-title">Local Football League Returns This Summer</h3>
-          <time class="update-date" datetime="2024-06-10">June 10, 2024</time>
-          <p class="update-content">The annual local football league is back with a refreshed schedule and enhanced
-            safety measures to ensure community sports thrive in offline events.</p>
-        </article>
-        <article class="update-card">
-          <h3 class="update-title">New Tennis Courts Open in City Park</h3>
-          <time class="update-date" datetime="2024-05-25">May 25, 2024</time>
-          <p class="update-content">Residents now have access to state-of-the-art tennis courts in City Park, perfect
-            for enthusiasts and beginners alike to enjoy the offline sport experience.</p>
-        </article>
-        <article class="update-card">
-          <h3 class="update-title">Annual Basketball Tournament Scheduled for July</h3>
-          <time class="update-date" datetime="2024-06-01">June 1, 2024</time>
-          <p class="update-content">Teams from across the region will compete in the highly anticipated annual
-            basketball tournament set for mid-July. Registration ends June 20.</p>
-        </article>
+        <p>Loading posts...</p>
       </div>
     </section>
 
@@ -107,6 +90,40 @@
       <p>Follow us on social media for more updates and live announcements.</p>
     </section>
   </main>
+
+
+
+<section id="create-post" class="create-post-section">
+  <h2>Create New Post</h2>
+  <form id="blog-form" class="blog-form">
+    <div class="form-group">
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="title" required placeholder="Enter post title">
+    </div>
+    
+    <div class="form-group">
+      <label for="post-description">Description</label>
+      <textarea id="post-description" name="description" required placeholder="Brief description of the post" rows="3"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="post-content">Full Content</label>
+      <textarea id="post-content" name="content" placeholder="Full post content (optional)" rows="6"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="post-date">Date</label>
+      <input type="date" id="post-date" name="dataCreated" required>
+    </div>
+    
+    <button type="submit" class="submit-btn">
+      <span class="btn-text">Create Post</span>
+      <span class="btn-loading" style="display: none;">Creating...</span>
+    </button>
+  </form>
+  
+  <div id="form-message" class="form-message" style="display: none;"></div>
+</section>
 
   <!-- footer -->
     <footer>
@@ -165,6 +182,7 @@
     </div>
   </footer>
 
+  <Script:src="./script/blog.js"></Script:src>
 </body>
 
 </html>
