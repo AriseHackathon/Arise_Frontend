@@ -157,7 +157,51 @@ async function initializeBlog() {
   if (blogForm) {
       blogForm.addEventListener('submit', handleFormSubmit);
       
-      // Set today's date as default
       document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
+  }
+}
+
+
+function renderPosts(posts) {
+  const updatesContainer = document.querySelector('.updates');
+  
+  if (!posts || posts.length === 0) {
+      updatesContainer.innerHTML = '<p class="no-posts">No posts available at the moment.</p>';
+      return;
+  }
+  
+  updatesContainer.innerHTML = posts.map((post, index) => `
+      <article class="update-card">
+          <h3 class="update-title">${post.title}</h3>
+          <time class="update-date" datetime="${post.dataCreated}">${formatDate(post.dataCreated)}</time>
+          <p class="update-content">${post.description}</p>
+          ${post.content ? `
+              <div class="post-content" id="content-${index}">
+                  ${post.content}
+              </div>
+              <button class="read-more-btn" onclick="toggleReadMore(${index})" id="btn-${index}">
+                  Read More
+              </button>
+          ` : ''}
+      </article>
+  `).join('');
+}
+
+function toggleReadMore(index) {
+  const content = document.getElementById(`content-${index}`);
+  const button = document.getElementById(`btn-${index}`);
+  
+  if (content && button) {
+      const isExpanded = content.classList.contains('expanded');
+      
+      if (isExpanded) {
+          content.classList.remove('expanded');
+          button.textContent = 'Read More';
+          button.style.background = 'linear-gradient(135deg, #40739e, #487eb0)';
+      } else {
+          content.classList.add('expanded');
+          button.textContent = 'Read Less';
+          button.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+      }
   }
 }
