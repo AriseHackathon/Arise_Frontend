@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
    const tabs = document.querySelectorAll('.game');
    const section = document.querySelector('.section');
 
-   // Store original content for each tab
    const tabContents = {};
    tabs.forEach(tab => {
       const type = tab.dataset.type;
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
    });
 
-   // Show default content (ongoing-games) and mark default active
    if (tabContents['ongoing']) {
       section.innerHTML = tabContents['ongoing'];
       tabs.forEach(tab => tab.classList.remove('active'));
@@ -24,14 +22,57 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.addEventListener('click', () => {
          const type = tab.dataset.type;
 
-         // Show the selected content
          if (tabContents[type]) {
             section.innerHTML = tabContents[type];
          }
 
-         // Update active class
          tabs.forEach(t => t.classList.remove('active'));
          tab.classList.add('active');
       });
    });
+});
+
+
+function checkAuthentication() {
+    const token = getAuthToken();
+    
+    if (!token) {
+        // No token found, redirect to login
+        alert('Please log in to access the Game Organizer Dashboard');
+        window.location.href = './login.html';
+        return false;
+    }
+    
+    verifyTokenWithServer(token);
+    return true;
+}
+
+
+async function verifyTokenWithServer(token) {
+    try {
+        const response = await fetch(`${API_BASE}/verify-token`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (!response.ok) {
+           
+            localStorage.removeItem('authToken');
+            alert('Your session has expired. Please log in again.');
+            window.location.href = './login.html';
+        }
+    } catch (error) {
+        console.error('Error verifying token:', error);
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (checkAuthentication()) {
+        loadStats();
+        loadGames();
+    }
 });
