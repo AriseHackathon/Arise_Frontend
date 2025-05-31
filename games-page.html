@@ -518,13 +518,13 @@ async function handleStartOrganizing() {
 
 async function verifyUserToken() {
     try {
-        const authToken = localStorage.getItem('authToken');
+        const authToken = sessionStorage.getItem('authToken');
         
-        console.log('Checking localStorage for authToken...');
+        console.log('Checking sessionStorage for authToken...');
         console.log('Token found:', !!authToken);
         
         if (!authToken) {
-            console.log('No auth token found in localStorage');
+            console.log('No auth token found in sessionStorage');
             return false;
         }
 
@@ -551,8 +551,8 @@ async function verifyUserToken() {
         }
         
         if (response.status === 401) {
-            console.log('Token expired or invalid, removing from localStorage');
-            localStorage.removeItem('authToken');
+            console.log('Token expired or invalid, removing from sessionStorage');
+            sessionStorage.removeItem('authToken');
         }
         
         console.log('Token verification failed');
@@ -563,7 +563,6 @@ async function verifyUserToken() {
         return false;
     }
 }
-
 
 
    </script>
