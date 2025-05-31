@@ -147,7 +147,7 @@
             </div>
          </div>
          <div class="conduct-games-action">
-            <button class="conduct-btn" onclick="window.location.href='./login.html'">
+            <button class="conduct-btn" onclick="handleStartOrganizing()">
                <i class="fas fa-plus-circle"></i>
                <span>Start Organizing</span>
             </button>
@@ -493,6 +493,33 @@
       document.getElementById('ongoingContainer').innerHTML = '';
       document.getElementById('upcomingContainer').innerHTML = '';
       document.getElementById('pastContainer').innerHTML = '';
+
+function handleStartOrganizing() {
+    const authToken = localStorage.getItem('authToken');
+    
+    if (authToken && isValidToken(authToken)) {
+        window.location.href = './games_org.html';
+    } else {
+        window.location.href = './login.html';
+    }
+}
+
+function isValidToken(token) {
+    try {
+        if (!token) return false;
+        
+       
+        return token.trim() !== '';
+        
+       
+        
+    } catch (error) {
+        console.error('Token validation error:', error);
+        return false;
+    }
+}
+
+
    </script>
 </body>
 
