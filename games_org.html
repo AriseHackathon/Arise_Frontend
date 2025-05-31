@@ -236,82 +236,9 @@
     <!-- games_org script -->
 
     <script>
-       // Add this script at the beginning of your games_org.html page, before the existing script
-// Make sure to define API_BASE before this script runs
+     
 
-const API_BASE = 'https://arise-backend-m9zz.onrender.com';
-
-// Optional: Display user info
-function displayUserInfo() {
-    const userInfo = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
-    if (userInfo.name) {
-        const headerP = document.querySelector('.container .header p');
-        if (headerP) {
-            headerP.textContent = `Welcome, ${userInfo.name}! Create and manage amazing gaming experiences for your community`;
-        }
-    }
-}
-
-// Check authentication on page load
-document.addEventListener('DOMContentLoaded', async () => {
-    const token = localStorage.getItem('authToken');
     
-    if (!token) {
-        // No token, redirect to login
-        alert('Please login to access the games organizer dashboard.');
-        window.location.href = './login.html';
-        return;
-    }
-    
-    // Token exists, verify it's valid
-    try {
-        const response = await fetch(`${API_BASE}/users/verify-token`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            
-            if (result.success) {
-                // Token is valid, proceed with page initialization
-                sessionStorage.setItem('currentUser', JSON.stringify(result.user));
-                loadStats();
-                loadGames();
-                displayUserInfo(); // Optional: show user info
-            } else {
-                throw new Error('Token verification failed');
-            }
-        } else {
-            throw new Error('Invalid response from server');
-        }
-    } catch (error) {
-        console.error('Authentication error:', error);
-        
-        // Remove invalid token and redirect
-        localStorage.removeItem('authToken');
-        sessionStorage.removeItem('currentUser');
-        
-        alert('Session expired or invalid. Please login again.');
-        window.location.href = './login.html';
-    }
-});
-
-       
-
-        // Show alert messages
-        function showAlert(message, type = 'success') {
-            const alertElement = document.getElementById(type === 'success' ? 'successAlert' : 'errorAlert');
-            alertElement.textContent = message;
-            alertElement.style.display = 'block';
-
-            setTimeout(() => {
-                alertElement.style.display = 'none';
-            }, 5000);
-        }
 
         // Icon selection
         document.querySelectorAll('.icon-option').forEach(option => {
