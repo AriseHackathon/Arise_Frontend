@@ -1,4 +1,3 @@
- // Panel switching functionality
  const container = document.getElementById('container');
  const signUpButton = document.getElementById('signUp');
  const signInButton = document.getElementById('signIn');
@@ -111,110 +110,78 @@
  });
 
  // Sign In functionality
- const signInForm = document.getElementById('signInForm');
- signInForm.addEventListener('submit', async (e) => {
-   e.preventDefault();
+ // Enhanced Sign In functionality with better error handling
+const signInForm = document.getElementById('signInForm');
+signInForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-   const formData = new FormData(signInForm);
-   const email = formData.get('email').trim();
-   const password = formData.get('password');
+  const formData = new FormData(signInForm);
+  const email = formData.get('email').trim();
+  const password = formData.get('password');
 
-   if (!email || !password) {
-     showMessage('signInMessage', 'Please fill in all fields', 'error');
-     return;
-   }
+  if (!email || !password) {
+    showMessage('signInMessage', 'Please fill in all fields', 'error');
+    return;
+  }
 
-   setFormLoading(signInForm, true);
-   clearMessages();
+  setFormLoading(signInForm, true);
+  clearMessages();
 
-   try {
-     const response = await fetch(`${API_BASE_URL}/users/login`, {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify({
-         email: email,
-         password: password
-       })
-     });
+  try {
+    console.log('Attempting login with:', { email, password: '***' });
+    
+    const response = await fetch(`${API_BASE_URL}/users/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    });
 
-     const result = await response.json();
+    console.log('Response status:', response.status);
+    console.log('Response ok:', response.ok);
 
-     if (result.success) {
-       // Store user information
-       sessionStorage.setItem('isLoggedIn', 'true');
-       sessionStorage.setItem('userId', result.user.id);
-       sessionStorage.setItem('userName', result.user.name);
-       sessionStorage.setItem('userEmail', result.user.email);
-       
-       showMessage('signInMessage', 'Login successful! Redirecting...', 'success');
-       
-       // Redirect to index.html after successful login
-       setTimeout(() => {
-         window.location.href = 'index.html';
-       }, 1500);
-       
-     
-     } else {
-       showMessage('signInMessage', result.message || 'Login failed', 'error');
-     }
-   } catch (error) {
-     console.error('Sign in error:', error);
-     showMessage('signInMessage', 'Network error. Please check if the server is running.', 'error');
-   } finally {
-     setFormLoading(signInForm, false);
-   }
- });
+    // Check if response is JSON
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(`Server returned non-JSON response: ${response.status} ${response.statusText}`);
+    }
 
- // Authentication utility functions
- function isLoggedIn() {
-   return sessionStorage.getItem('isLoggedIn') === 'true';
- }
+    const result = await response.json();
+    console.log('Response data:', result);
 
- function logout() {
-   sessionStorage.removeItem('isLoggedIn');
-   sessionStorage.removeItem('userId');
-   sessionStorage.removeItem('userName');
-   sessionStorage.removeItem('userEmail');
-   showMessage('signInMessage', 'Logged out successfully', 'success');
- }
-
- function getCurrentUser() {
-   if (!isLoggedIn()) return null;
-   return {
-     id: sessionStorage.getItem('userId'),
-     name: sessionStorage.getItem('userName'),
-     email: sessionStorage.getItem('userEmail')
-   };
- }
-
- // Simple fetch utility (no authentication needed)
- async function simpleFetch(url, options = {}) {
-   const response = await fetch(url, {
-     headers: {
-       'Content-Type': 'application/json',
-       ...options.headers
-     },
-     ...options
-   });
-
-   return response;
- }
-
- // Check login status on page load
- window.addEventListener('load', () => {
-   if (isLoggedIn()) {
-     const user = getCurrentUser();
-     showMessage('signInMessage', `Welcome back, ${user.name}!`, 'success');
-   }
-   
- });
-
- // Expose functions globally for debugging/testing
- window.authUtils = {
-   isLoggedIn,
-   logout,
-   getCurrentUser,
-   simpleFetch
- };
+    if (result.success) {
+      // Store user information
+      sessionStorage.setItem('isLoggedIn', 'true');
+      sessionStorage.setItem('userId', result.user.id);
+      sessionStorage.setItem('userName', result.user.name);
+      sessionStorage.setItem('userEmail', result.user.email);
+      
+      showMessage('signInMessage', 'Login successful! Redirecting...', 'success');
+      
+      // Redirect to index.html after successful login
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
+      
+    } else {
+      showMessage('signInMessage', result.message || 'Login failed', 'error');
+    }
+  } catch (error) {
+    console.error('Sign in error details:', error);
+    
+    // More specific error messages
+    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+      showMessage('signInMessage', 'Cannot connect to server. Please check if the server is running.', 'error');
+    } else if (error.message.includes('non-JSON response')) {
+      showMessage('signInMessage', 'Server error: Invalid response format. Check server logs.', 'error');
+    } else {
+      showMessage('signInMessage', `Network error: ${error.message}`, 'error');
+    }
+  } finally {
+    setFormLoading(signInForm, false);
+  }
+});
