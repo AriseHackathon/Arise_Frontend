@@ -518,15 +518,10 @@ async function handleStartOrganizing() {
 
 async function verifyUserToken() {
     try {
-        let authToken = localStorage.getItem('authToken') || 
-                       localStorage.getItem('token') || 
-                       localStorage.getItem('jwtToken') ||
-                       localStorage.getItem('accessToken');
+        const authToken = localStorage.getItem('authToken');
         
-        console.log('Checking localStorage for tokens...');
-        console.log('authToken:', localStorage.getItem('authToken'));
-        console.log('token:', localStorage.getItem('token'));
-        console.log('All localStorage keys:', Object.keys(localStorage));
+        console.log('Checking localStorage for authToken...');
+        console.log('Token found:', !!authToken);
         
         if (!authToken) {
             console.log('No auth token found in localStorage');
@@ -550,12 +545,14 @@ async function verifyUserToken() {
             const data = await response.json();
             console.log('Backend response data:', data);
             return data.success === true;
+        } else {
+            const errorData = await response.text();
+            console.log('Backend error response:', errorData);
         }
         
         if (response.status === 401) {
             console.log('Token expired or invalid, removing from localStorage');
             localStorage.removeItem('authToken');
-            localStorage.removeItem('token');
         }
         
         console.log('Token verification failed');
@@ -566,6 +563,7 @@ async function verifyUserToken() {
         return false;
     }
 }
+
 
 
    </script>
