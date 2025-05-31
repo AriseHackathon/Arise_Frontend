@@ -34,16 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function checkAuthentication() {
-    const token = getAuthToken();
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     
-    if (!token) {
-        // No token found, redirect to login
+    if (isLoggedIn !== 'true') {
         alert('Please log in to access the Game Organizer Dashboard');
         window.location.href = './login.html';
         return false;
     }
     
-    verifyTokenWithServer(token);
     return true;
 }
 
