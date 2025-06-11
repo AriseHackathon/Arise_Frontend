@@ -80,6 +80,7 @@ body {
    position: relative;
    flex: 1;
    min-width: 250px;
+
 }
 
 .search-box i {
@@ -106,7 +107,7 @@ body {
    border: none;
    border-radius: 50px;
    background: white;
-   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 7.5px 15px rgba(0, 0, 0, 0.1);
    font-size: 1rem;
    outline: none;
    cursor: pointer;
@@ -160,7 +161,7 @@ body {
 .card-image {
    position: relative;
    height: 200px;
-   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+   background: linear-gradient(30deg, #d63031, #667eea);
    display: flex;
    align-items: center;
    justify-content: center;
@@ -337,7 +338,7 @@ body {
 .modal-header {
    position: relative;
    height: 200px;
-   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+   background: linear-gradient(35deg, #d63031, #667eea);
    display: flex;
    align-items: center;
    justify-content: center;
@@ -546,7 +547,7 @@ body {
  }
  
  .conduct-btn {
-   background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+   background: linear-gradient(45deg, #eb7348, #ee5a24);
    border: none;
    padding: 18px 35px;
    border-radius: 50px;
@@ -565,7 +566,7 @@ body {
  .conduct-btn:hover {
    transform: translateY(-3px);
    box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
-   background: linear-gradient(45deg, #ff5252, #d63031);
+   background: linear-gradient(45deg, #eb7345, #ee5a26);
  }
  
  .conduct-btn:active {
